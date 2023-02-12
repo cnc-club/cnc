@@ -23,3 +23,30 @@ Git config
 [branch "main"]
 	remote = origin
 	merge = refs/heads/main
+	
+
+==========================
+Install features 
+==========================
+
+	
+ln Загрузки/ Downloads -s
+
+sudo nano /etc/inputrc
+
+sudo apt install gedit git 
+
+
+git config --global user.email "nick@a.a"
+git config --global user.name "Nick"
+
+
+# DWAGENT
+cd Downloads
+chmod a+x dwagent.sh 
+sudo ./dwagent.sh
+
+unzip cnck
+mkdir ~/.ssh
+mv home/nick/.ssh/cnc ~/.ssh
+rm home -r
