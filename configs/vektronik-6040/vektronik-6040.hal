@@ -21,7 +21,7 @@ addf stepgen.update-freq servo-thread
 addf pwmgen.update servo-thread
 
 net spindle-cmd-rpm => pwmgen.0.value
-net spindle-on <= spindle.0.on => pwmgen.0.enable
+net spindle-on <= spindle.0.forward => pwmgen.0.enable
 net spindle-pwm <= pwmgen.0.pwm
 setp pwmgen.0.pwm-freq 100.0
 setp pwmgen.0.scale 21666.666666666664
@@ -46,9 +46,16 @@ setp parport.0.pin-06-out-reset 1
 net zdir            => parport.0.pin-07-out
 net spindle-pwm     => parport.0.pin-14-out
 net coolant-flood   => parport.0.pin-16-out
-net home-x          <= parport.0.pin-10-in
-net home-y          <= parport.0.pin-11-in
-net home-z          <= parport.0.pin-12-in
+net spindle-on     => parport.0.pin-17-out
+
+setp parport.0.pin-14-out-invert 0
+setp parport.0.pin-16-out-invert 1
+setp parport.0.pin-17-out-invert 1
+
+
+net home-x          <= parport.0.pin-10-in-not
+net home-y          <= parport.0.pin-11-in-not
+net home-z          <= parport.0.pin-12-in-not
 
 setp stepgen.0.position-scale [JOINT_0]SCALE
 setp stepgen.0.steplen 1
