@@ -1,6 +1,0 @@
-# add a key  
-
-Host github-mex
-    HostName github.com:cnc-club/cnc-mex.git
-    User git
-    IdentityFile ~/.ssh/cnc
