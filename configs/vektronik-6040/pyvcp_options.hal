@@ -1,0 +1,5 @@
+# These files are loaded post GUI, in the order they appear
+# Создан stepconf 1.1 в Sun Feb 12 20:49:34 2023
+# Все изменения в этом файле будут перезаписаны
+# при следующем запуске stepconf
+sets spindle-at-speed true
