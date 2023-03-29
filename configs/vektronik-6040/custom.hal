@@ -1,3 +1,10 @@
 # Включайте Ваши custom HAL-команды здесь
 # Этот файл не будет перезаписан после повторного запуска stepconf
 
+
+loadrt charge_pump
+show 
+addf charge-pump servo-thread
+
+net chargepump	<= charge-pump.out	=> parport.0.pin-01-out
+net estop-out => charge-pump.enable
