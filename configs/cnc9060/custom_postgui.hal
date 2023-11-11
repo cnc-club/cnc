@@ -1,2 +1,5 @@
 # Include your custom_postgui HAL commands here
 # This file will not be overwritten when you run PNCconf again
+
+net vcp-tool 	<= halui.tool.number		=> pyvcp.vcp-tool
+net vcp-tool-change		<= pyvcp.vcp-toolchange		=> halui.mdi-command-17

@@ -1,0 +1,18 @@
+<pyvcp>
+    <label>
+        <text>"Текщий инструмент:"</text>
+    </label>
+
+	<u32>
+		<halpin>"vcp-tool"</halpin>
+		<font>("Helvetica",16)</font>
+		<format>"6d"</format>
+		<width>6</width>
+	</u32>
+
+	<button>
+		<font>("Helvetica",20)</font>
+		<halpin>"vcp-toolchange"</halpin>
+		<text>"Сменить инструмент"</text> 
+	</button>
+</pyvcp>
