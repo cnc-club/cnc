@@ -1,0 +1,5 @@
+O<common> SUB 
+	#<_stol-z> = -108.90
+	(DEBUG, #<_stol-z>)
+
+O<common> ENDSUB 

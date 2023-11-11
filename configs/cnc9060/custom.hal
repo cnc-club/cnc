@@ -1,0 +1,40 @@
+# Include your custom HAL commands here
+# This file will not be overwritten when you run PNCconf again
+loadrt logic names=estop personality=262 
+loadrt timedelay count=2
+addf timedelay.0 servo-thread
+addf timedelay.1 servo-thread
+addf estop servo-thread
+net servo1-ready	 <=	hm2_7i96.0.gpio.002.in	=> estop.in-00 
+net servo2-ready	 <=	hm2_7i96.0.gpio.003.in	=> estop.in-01 
+net servo3-ready	 <=	hm2_7i96.0.gpio.004.in	=> estop.in-02
+net servo4-ready	 <=	hm2_7i96.0.gpio.005.in	=> estop.in-03 
+net estop-out	 <=	iocontrol.0.user-enable-out	=> estop.in-04
+setp estop.in-05 true
+net estop-main  <= estop.and => iocontrol.0.emc-enable-in
+net estop-main  =>  hm2_7i96.0.ssr.00.out-04    ## unlock Z brake
+# --- SPINDLE ---
+### unlock tool changer
+net spindle-tight     <=  hm2_7i96.0.gpio.009.in
+net spindle-cw => timedelay.0.in
+net spindle-at-speed <= timedelay.0.out
+setp timedelay.0.on-delay 10
+net spindle-brake	=> timedelay.1.in
+net spindle-stopped	<= timedelay.1.out	=> hm2_7i96.0.ssr.00.out-03 
+setp timedelay.1.on-delay 6
+### PWM
+loadrt pwmgen output_type=0
+addf pwmgen.make-pulses servo-thread
+addf pwmgen.update servo-thread
+net spindle-cw 	=> pwmgen.0.enable
+net spindle-vel-cmd-rpm 	=> pwmgen.0.value
+net spin-pwm <= pwmgen.0.pwm	=> hm2_7i96.0.ssr.00.out-00
+setp pwmgen.0.scale 18000
+setp pwmgen.0.pwm-freq 500
+# --- SPINDLE ---
+# --- HOME ---
+net home-x     <=  hm2_7i96.0.gpio.006.in_not
+net home-x2     <=  hm2_7i96.0.gpio.010.in_not
+net home-y     <=  hm2_7i96.0.gpio.007.in_not
+net home-z     <=  hm2_7i96.0.gpio.008.in_not
+# --- HOME ---

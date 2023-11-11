@@ -1,0 +1,6 @@
+O<goto0> SUB
+	(debug, GOTO 0)
+	G53 G0 Z22 
+	G4 P0.5
+	G53 G0 X0 Y0
+O<goto0> ENDSUB

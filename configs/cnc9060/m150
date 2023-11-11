@@ -1,0 +1,13 @@
+#!/bin/bash 
+
+t=`zenity --entry`
+
+echo $t
+
+echo -e "O<tool-change> SUB \n T$t M6\n(DEBUG, Tool change --> $t)\n G43 \nO<tool-change> ENDSUB" >subs/tool-change.ngc
+sleep 0.1
+
+halcmd setp halui.mdi-command-18 0
+sleep 0.3
+halcmd setp halui.mdi-command-18 1
+sleep 0.3

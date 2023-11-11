@@ -1,0 +1,4 @@
+O<set-y0> SUB
+	(debug, Y0)
+	G92 Y0
+O<set-y0> ENDSUB
