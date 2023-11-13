@@ -8,7 +8,7 @@ loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JO
 loadrt hostmot2
 show pin axis
 
-loadrt hm2_eth board_ip="192.168.1.121" config="num_encoders=1 num_pwmgens=0 num_stepgens=5 sserial_port_0=0xxxxx" 
+loadrt hm2_eth board_ip="192.168.5.121" config="num_encoders=1 num_pwmgens=0 num_stepgens=5 sserial_port_0=0xxxxx" 
 setp    hm2_7i96.0.watchdog.timeout_ns 5000000
 loadrt pid names=pid.x,pid.x2,pid.y,pid.z,pid.s
 
@@ -331,7 +331,7 @@ net machine-is-enabled        <=  motion.motion-enabled
 #  ---estop signals---
 
 net estop-out     <=  iocontrol.0.user-enable-out
-net estop-out     =>  iocontrol.0.emc-enable-in
+#net estop-out     =>  iocontrol.0.emc-enable-in
 
 #  ---manual tool change signals---
 
@@ -340,4 +340,3 @@ net tool-change-request     iocontrol.0.tool-change       =>  hal_manualtoolchan
 net tool-change-confirmed   iocontrol.0.tool-changed      <=  hal_manualtoolchange.changed
 net tool-number             iocontrol.0.tool-prep-number  =>  hal_manualtoolchange.number
 net tool-prepare-loopback   iocontrol.0.tool-prepare      =>  iocontrol.0.tool-prepared
-

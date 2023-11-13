@@ -1,0 +1,5 @@
+O<tool-change> SUB 
+ T204 M6
+(DEBUG, Tool change --> 204)
+ G43 
+O<tool-change> ENDSUB
