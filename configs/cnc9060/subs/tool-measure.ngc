@@ -1,5 +1,5 @@
 O<tool-measure> SUB
-	(debug, Y0)
+	(debug, Set Z=50 for #<_current_tool> tool)
 	G10 L10 P#<_current_tool> Z50
 	G43
 O<tool-measure> ENDSUB
